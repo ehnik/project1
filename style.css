@@ -8,41 +8,26 @@ h1{
   text-align: center;
   font-family: sans-serif;
   font-size: 60px;
-}
 
+}
 .container{
-  height: 76%;
-  /*width: auto*/
-  /*~~~~*/
-  width: 948px;
-  /*~~~~*/
+  height: 75%;
+  width: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  background-color: #333;
+  justify-content: : space-between;
+  // background-color: #333;
   background-image: url("http://eskipaper.com/images/cityscape-12.jpg");
   background-position: center center;
   margin: 0 auto;
 }
-
 .poles{
   background: brown;
   height: 300px;
   width: 40px;
   margin-top: auto;
-  /*margin-left: auto;
-  margin-right: auto;*/
-  /*border-width: 0px 135px 0 135px;*/
-  /*~~~~~*/
-  /*Padding is considered part of the droppable area, but margin is not. So I set the Margin to zero and set the padding to auto*/
-  padding: 0px 135px 0 135px;
-  margin-left: 0;
-  margin-right: 0;
-  /*~~~~~~~*/
-  border-style: solid;
-  border-color: rgba(0,0,0,0);
-  background-clip: content-box;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -51,16 +36,22 @@ h1{
   justify-content: flex-end;
 }
 
-.highlight{
-  background-color: yellow;
+
+.discs {
+  border: solid purple;
+  background: green;
+}
+
+.highlight {
+  background: yellow;
 }
 
 #disc1{
+
   height: 25px;
   width: 100px;
   order:1;
   border: solid purple;
-  border-radius: 10px;
   border-style: groove;
   background: green;
 }
@@ -70,7 +61,6 @@ h1{
   width: 120px;
   order: 2;
   border: solid cyan;
-  border-radius: 10px;
   border-style: groove;
   background: salmon;
 
@@ -81,14 +71,12 @@ h1{
   width: 140px;
   order:3;
   border: solid orange;
-  border-radius: 10px;
   border-style: groove;
   background: maroon;
 }
 
-footer{
+footer.active {
   font-size: 70px;
-  text-align: center;
   height: 100%;
   width: auto;
 }
