@@ -5,9 +5,9 @@ disc1 =
   loc : 1
 }
 
-$(function pole () {
-  console.log("pole hoisted" + pole1.id.firstChild())
-})
+//$(function pole () {
+  //console.log("pole hoisted" + pole1.id.firstChild())
+//})
 
 disc2 =
 {
