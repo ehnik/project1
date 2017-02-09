@@ -10,6 +10,9 @@ h1{
   font-size: 60px;
 
 }
+/*To ensure that the disks won't get scrunched on page resize, either set the container
+to a static pixel width or make the sizing of the disks in percentages. */
+/*Good use of flexbox though*/
 .container{
   height: 75%;
   width: auto;
@@ -45,7 +48,11 @@ h1{
 .highlight {
   background: yellow;
 }
-
+/*If you wanted to expand the functionality of your game to allow for a dynamic
+number of disks, you would have to apply some of this css styling for the disks
+in your javascript instead of statically here. For example, the width of each disk
+would have to be determined by the base width divided by the number of disks there
+are times which level disk it is. */
 #disc1{
 
   height: 25px;
