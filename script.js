@@ -1,4 +1,15 @@
-disc1 =
+var disc1={}
+var disc2={}
+var disc3={}
+
+var pole1={}
+var pole2={}
+var pole3={}
+
+
+function start () {
+
+  disc1 =
 {
   id: $("#disc1"),
   value: 1,
@@ -43,6 +54,26 @@ pole3 =
   id : $("#pole3"),
   numID: 3
 }
+
+console.log(pole1)
+$("#win").detach()
+}
+
+start()
+
+function reset () {
+  $("#disc3").prependTo($("#pole1"));
+  $("#disc2").prependTo($("#pole1"));
+  $("#disc1").prependTo($("#pole1"));
+  start()
+  currentPole (disc1);
+  currentPole (disc2);
+  currentPole (disc3);
+  console.log(disc1.pole)
+  console.log(disc2.pole)
+  console.log(disc3.pole)
+}
+
 function currentPole (disc) {
   if(disc.loc == 1)
   {
@@ -82,7 +113,8 @@ function win() {
   {
   //alert("You win!");
   //console.log("win!")
-  $("footer").prepend("You win!");
+  var winMessage = $('<p id="win">You win!</p>');
+  $(".container").prepend(winMessage);
   return true;
   }
   else {
@@ -146,15 +178,16 @@ $(function() { //still working on this function--will prevent the disc from gett
   var endPole  //checks to see if html disc has moved without moving poles
   $(".discs").draggable({
   start: $(this).on("dragstart", function( event, ui ) {startPole =
-  ($(this).parent().attr("id"))})
+  ($(this).parent().attr("id"))}),
+  stop: $(this).on("dragstop", function( event, ui ) {
+    console.log($(this).parent().attr("id"))
+    $(ui.helper).addClass("ui-helper-discs");
+    })
   })
-  $( ".discs" ).draggable({
-  stop: $(this).on("dragstop", function( event, ui ) {console.log($(this).parent().attr("id"))
-  })
-  })
-  })
+})
 
 function handleDiscDrop(event,ui){
+  console.log("handleDiscDrop")
   var thisDisc = ui.draggable;
   var discID = thisDisc.attr("id");
   var poleID = $(this).attr("id");
@@ -213,3 +246,23 @@ function handleDiscDrop(event,ui){
     })
     }
  }
+
+ ///////
+ function rules() {
+    document.getElementById("myDropdown1").classList.toggle("show1");
+}
+
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show1')) {
+        openDropdown.classList.remove('show1');
+      }
+    }
+  }
+}

@@ -6,19 +6,39 @@
   <title>Towers of Hanoi</title>
 </head>
 <body>
-  <h1>Towers of Quinoa</h1>
+
+  <h1>Towers of Hanoi</h1>
+  <div class = "panel">
+    <button id="rules" onclick="rules()" class="dropbtn">Rules</button>
+
+    <button id="restart" onclick="reset()" class="dropbtn">Restart</button>
+  </div>
+
+  <div id="myDropdown1" class="dropdown-content">
+    <h4> Welcome to Towers of Hanoi! </h4>
+    <p> Your goal: move all three discs onto the final tower in the cityscape.<br>
+        Rule 1: you may only move one disc at a time.<br>
+        Rule 2: you may only place a disc on top of a larger disc.<br>
+        Rule 3: you may move a disc to any valid pole.<br><br>
+    </p>
+  <p style="text-align:center">Have fun!</p>
+    </p>
+  </div>
+  
   <div class ="container">
-    <div id = "pole1" class = "poles">
+
+
+    <div id = "pole1" class = "poles pole1">
       <div id="disc1" class = "discs active"></div>
       <div id="disc2" class = "discs active"></div>
       <div id="disc3" class = "discs active"></div>
     </div>
 
 
-    <div id = "pole2" class = "poles"></div>
+    <div id = "pole2" class = "poles pole2"></div>
 
 
-    <div id = "pole3" class = "poles"></div>
+    <div id = "pole3" class = "poles pole3"></div>
   </div>
   <footer>
   </footer>

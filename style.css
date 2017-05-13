@@ -1,33 +1,73 @@
 
 html,body{
-  height: 75%;
+  height: 85%;
   width: auto;
+  display: block
 }
 
 h1{
   text-align: center;
   font-family: sans-serif;
   font-size: 60px;
+  padding: 5px;
+  margin-bottom: 50px;
+  margin-top: 0px;
 }
 
 .container{
-  height: 76%;
+  height: 100%;
   /*width: auto*/
   /*~~~~*/
   width: 948px;
   /*~~~~*/
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   background-color: #333;
   background-image: url("http://eskipaper.com/images/cityscape-12.jpg");
   background-position: center center;
   margin: 0 auto;
+  z-index: 0;
 }
 
-.poles{
-  background: brown;
+.highlight{
+  background-color: yellow;
+  opacity:0.4;
+}
+/*figure out how to get inheritance from .poles1
+*/
+.pole1{
+  height: 300px;
+  width: 40px;
+  margin-top: auto;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  /*border-width: 0px 135px 0 135px;*/
+  /*~~~~~*/
+  /*Padding is considered part of the droppable area, but margin is not. So I set the Margin to zero and set the padding to auto*/
+  padding: 0px 135px 0px 135px;
+  margin-left: 0;
+  margin-right: 0;
+  /*~~~~~~~*/
+  border-style: solid;
+  border-color: rgba(0,0,0,0);
+
+  background-image: url("./tower1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-clip: padding-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: visible;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pole2{
   height: 300px;
   width: 40px;
   margin-top: auto;
@@ -42,7 +82,11 @@ h1{
   /*~~~~~~~*/
   border-style: solid;
   border-color: rgba(0,0,0,0);
-  background-clip: content-box;
+
+  background-image: url("./tower2.png");
+  background-repeat: no-repeat;
+  background-size: 150% 150%;
+  background-position: calc(35% - 5px) top;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -51,39 +95,64 @@ h1{
   justify-content: flex-end;
 }
 
-.highlight{
-  background-color: yellow;
+.pole3{
+  height: 300px;
+  width: 40px;
+  margin-top: auto;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  /*~~~~~*/
+  /*Padding is considered part of the droppable area, but margin is not. So I set the Margin to zero and set the padding to auto*/
+  padding: 0px 135px 0 135px;
+  margin-left: 0;
+  margin-right: 0;
+  /*~~~~~~~*/
+  border-style: solid;
+  border-color: rgba(0,0,0,0);
+
+  background-image: url("./tower3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: calc(50% + 7px) center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: visible;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 #disc1{
   height: 25px;
   width: 100px;
   order:1;
-  border: solid purple;
-  border-radius: 10px;
+  /*border: solid purple;
+  */border-radius: 10px;
   border-style: groove;
-  background: green;
+  background: linear-gradient(cyan, white);
+  opacity: 0.9
 }
 
 #disc2{
   height: 25px;
   width: 120px;
   order: 2;
-  border: solid cyan;
-  border-radius: 10px;
+  /*border: solid cyan;
+  */border-radius: 10px;
   border-style: groove;
-  background: salmon;
-
+  background: linear-gradient(salmon, white);
+  opacity: 0.9
 }
 
 #disc3{
   height: 25px;
   width: 140px;
   order:3;
-  border: solid orange;
-  border-radius: 10px;
+  /*border: solid orange;
+  */border-radius: 10px;
   border-style: groove;
-  background: maroon;
+  background: linear-gradient(gray, white);
+  opacity: 0.9
 }
 
 footer{
@@ -91,4 +160,94 @@ footer{
   text-align: center;
   height: 100%;
   width: auto;
+}
+
+/* Dropdown Button */
+#rules {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: black solid;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    left: 775px
+}
+
+#restart {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: black solid;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    left: 775px
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 305px;
+    left: 375px;
+    overflow: hidden;
+    width: 455px;
+    background-color: #f9f9f9;
+    opacity:0.7;
+    box-shadow: 50px 50px 50px 100px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    z-index: 3;
+/*    animation: row 10s linear;
+}
+
+@keyframes row {
+  0% {
+    background-size: 0% 0%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+*/
+}
+
+.dropdown-content h4{
+    text-align: center
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show1 {
+  display:block;
+  z-index: 3;
+}
+
+#win{
+  font-size: 100px;
+  width: 400px;
+  position: absolute;
+  top: 80px;
+  left: 305px;
+}
+
+.panel{
+  height: 50px;
+  width: 948px;
+  position: relative;
+  margin: auto;
+  background-color: gray;
+  opacity: 0.7;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
 }
