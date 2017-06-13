@@ -6,8 +6,31 @@ var pole1={}
 var pole2={}
 var pole3={}
 
+var secs = 0;
+var minutes = 0;
+var timer = null;
+var timerRunning = false;
 
-function start () {
+$("#ok").click(
+  function() {
+    $("#rules-content").removeClass("show")
+})
+
+$("#rules").click(
+  function() {
+    $("#rules-content").addClass("show")
+})
+
+$("#discs").click(
+  function() {
+    $("#discs-menu").toggle("show")
+})
+
+var discNumber = $('input[name=discNum]:checked').val()
+$('#3').prop('checked',true)
+
+
+function setUp () {
 
   disc1 =
 {
@@ -15,10 +38,6 @@ function start () {
   value: 1,
   loc : 1
 }
-
-//$(function pole () {
-  //console.log("pole hoisted" + pole1.id.firstChild())
-//})
 
 disc2 =
 {
@@ -55,40 +74,35 @@ pole3 =
   numID: 3
 }
 
-console.log(pole1)
-$("#win").detach()
 }
 
-start()
+setUp()
 
 function reset () {
+  $("#win").removeClass("show");
   $("#disc3").prependTo($("#pole1"));
   $("#disc2").prependTo($("#pole1"));
   $("#disc1").prependTo($("#pole1"));
-  start()
+  setUp()
+  $(".pause").text("Pause")
+  $(".pause").removeClass("unpause")
   currentPole (disc1);
   currentPole (disc2);
   currentPole (disc3);
-  console.log(disc1.pole)
-  console.log(disc2.pole)
-  console.log(disc3.pole)
 }
 
 function currentPole (disc) {
   if(disc.loc == 1)
   {
     disc.pole = pole1;
-    console.log("convert function")
   }
   if(disc.loc == 2)
   {
     disc.pole = 2;
-    console.log("convert function")
   }
   if(disc.loc == 3)
   {
     disc.pole = 3;
-    console.log("convert function")
   }
 }
 currentPole (disc1);
@@ -113,8 +127,8 @@ function win() {
   {
   //alert("You win!");
   //console.log("win!")
-  var winMessage = $('<p id="win">You win!</p>');
-  $(".container").prepend(winMessage);
+  $("#win").addClass("show");
+  clearInterval(timer);
   return true;
   }
   else {
@@ -158,21 +172,76 @@ function move (poleOrg, poleNew, disc) {
   }
 }
 
-$(function() {
-   $(".discs").draggable({
-   containment: $(".container"),
-   cursor: "move",
-   snap: $(".poles")
-  })
+function displayTime(){
+  if (secs==60){
+    secs = 0;
+    minutes++;
+  }
+  if (secs<10){
+    secs = "0"+secs;
+  }
+    if (minutes){
+      $("#timer").text(minutes +":" +secs)
+      }
+    else{
+      $("#timer").text(":" +secs)
+      }
+  secs++;
+  timerRunning = true;
+}
+
+
+$("#start").click(
+function() {
+    if($("#start").hasClass("inProgress")){
+      //resets game when "restart" is pressed
+      reset();
+      secs = 0;
+      minutes = 0;
+      clearInterval(timer);
+      timer = null;
+      $(".discs").draggable({disabled: true})
+      $(".pause").removeClass("inProgress")
+      $(".start").removeClass("inProgress")
+      $(".start").text("Start New Game")
+    }
+    else{
+      //makes start button into "restart" button
+      timer = window.setInterval(displayTime, 1000);
+      $(".start").text("Restart")
+      $(".start").addClass("inProgress")
+      $(".pause").addClass("inProgress")
+      $(".discs").draggable({
+      containment: $(".container"),
+      cursor: "move",
+      snap: $(".poles")
+      })
+      $(".discs").draggable("enable")
+      $(".poles").droppable({
+      hoverClass: "highlight",
+      drop: handleDiscDrop
+    })
+  }
 })
 
-$(function() {
-   $(".poles").droppable({
-   hoverClass: "highlight",
-   drop: handleDiscDrop
- })
+$(".pause").click(
+function() {
+  if (timerRunning){
+    clearInterval(timer);
+    $(".pause").text("Unpause")
+    $(".pause").addClass("unpause")
+    $(".discs").draggable("disable")
+    timerRunning=false;
+  }
+  else{
+    $(".pause").removeClass("unpause")
+    $(".discs").draggable("enable")
+    $(".pause").text("Pause");
+    timer = window.setInterval(displayTime, 1000);
+  }
 })
 
+/*
 $(function() { //still working on this function--will prevent the disc from getting stuck in between poles
   var startPole
   var endPole  //checks to see if html disc has moved without moving poles
@@ -185,9 +254,9 @@ $(function() { //still working on this function--will prevent the disc from gett
     })
   })
 })
+*/
 
 function handleDiscDrop(event,ui){
-  console.log("handleDiscDrop")
   var thisDisc = ui.draggable;
   var discID = thisDisc.attr("id");
   var poleID = $(this).attr("id");
@@ -211,58 +280,44 @@ function handleDiscDrop(event,ui){
     {
       currentdisc = disc1;
       poleOrg = currentdisc.pole;
-      console.log(currentdisc.id)
     }
     if(discID == "disc2")
     {
       currentdisc = disc2;
       poleOrg = currentdisc.pole;
-      console.log(currentdisc.id)
     }
     if(discID  == "disc3")
     {
       currentdisc = disc3;
       poleOrg = currentdisc.pole;
-      console.log(currentdisc.id)
-
     }
     move (poleOrg, poleNew, currentdisc);
     if(poleNew.discs.length == 1) {
     ui.draggable.position({
-      at: "bottom-16",
+      my: "bottom",
+      at: "bottom",
       of: poleNew.id,
+      collision: "fit",
     })
     }
     if(poleNew.discs.length == 2) {
+    var lastDisc = poleNew.discs[0].id
     ui.draggable.position({
-      at: "top+85%",
-      of: poleNew.id,
+      my: "bottom",
+      at: "top",
+      of: lastDisc,
+      collision: "flipfit",
     })
     }
     if(poleNew.discs.length == 3) {
+    var lastDisc = poleNew.discs[1].id
     ui.draggable.position({
-      at: "top+75%",
-      of: poleNew.id,
+      my: "bottom",
+      at: "top",
+      of: lastDisc,
+      collision: "flipfit",
     })
     }
  }
 
- ///////
- function rules() {
-    document.getElementById("myDropdown1").classList.toggle("show1");
-}
-
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show1')) {
-        openDropdown.classList.remove('show1');
-      }
-    }
-  }
-}
+ ///

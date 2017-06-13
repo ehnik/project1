@@ -6,27 +6,56 @@
   <title>Towers of Hanoi</title>
 </head>
 <body>
+  <div class="game-container">
 
-  <h1>Towers of Hanoi</h1>
-  <div class = "panel">
-    <button id="rules" onclick="rules()" class="dropbtn">Rules</button>
+    <div class = "panel">
+      <button id="start" class="start">Start New Game</button>
+      <button id="discs" class="menu-button dropbtn">Discs</button>
+      <button id="rules" class="menu-button dropbtn">Instructions</button>
+      <button class="dropbtn pause">Pause</button>
+    </div>
 
-    <button id="restart" onclick="reset()" class="dropbtn">Restart</button>
-  </div>
+    <div id="timer">
+    </div>
 
-  <div id="myDropdown1" class="dropdown-content">
-    <h4> Welcome to Towers of Hanoi! </h4>
-    <p> Your goal: move all three discs onto the final tower in the cityscape.<br>
-        Rule 1: you may only move one disc at a time.<br>
-        Rule 2: you may only place a disc on top of a larger disc.<br>
-        Rule 3: you may move a disc to any valid pole.<br><br>
-    </p>
-  <p style="text-align:center">Have fun!</p>
-    </p>
-  </div>
-  
+    <div id="rules-content">
+      <h2> Welcome to Towers of Hanoi! </h2>
+      <p> How to play? Simple: move each disc onto the final skyscraper!
+        <br><br>
+        <span style="font-weight:700">Rules</span>
+        <br>
+        <span style="text-align:right">
+        1) You may only place a disc on top of a larger disc.<br>
+        2) You may only move one disc at a time.<br>
+        3) You will be timed and the number of moves you take will be tracked.
+        Aim for the smallest number of moves and shortest time possible.
+        </span>
+        <br><br>
+        You can change the number of discs by clicking the "Discs" button.
+        <br><br>
+        If you need to take a break, pause the game. If you'd like to start over, click "Restart".
+        To see your highest score for the session, click "Score".
+        <br><br>
+        When you're ready to start, click "Start a New Game" at the top of the screen!
+        <br><br>
+        Have fun!
+      </p>
+      <button id="ok">Okay</button>
+    </div>
+
+    <div id="discs-menu">
+      <input id="3" type="radio" name="discNum" value="3"> 3<br>
+      <input id="4" type="radio" name="discNum" value="4"> 4<br>
+      <input id-"5" type="radio" name="discNum" value="5"> 5<br>
+      <br>
+      <button id="ok">Okay</button>
+    </div>
+
+    <div id="win">
+      You win!
+    </div>
+
   <div class ="container">
-
 
     <div id = "pole1" class = "poles pole1">
       <div id="disc1" class = "discs active"></div>
@@ -34,17 +63,14 @@
       <div id="disc3" class = "discs active"></div>
     </div>
 
-
     <div id = "pole2" class = "poles pole2"></div>
-
-
     <div id = "pole3" class = "poles pole3"></div>
+
   </div>
-  <footer>
-  </footer>
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="script.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

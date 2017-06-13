@@ -1,8 +1,15 @@
 
 html,body{
-  height: 85%;
-  width: auto;
-  display: block
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.game-container{
+  height:100%;
+  width: 100%;
+  position: relative;
+  display:block;
 }
 
 h1{
@@ -16,9 +23,9 @@ h1{
 
 .container{
   height: 100%;
-  /*width: auto*/
+  width: 100%;
   /*~~~~*/
-  width: 948px;
+  /*width: 948px;
   /*~~~~*/
   position: relative;
   display: flex;
@@ -39,25 +46,26 @@ h1{
 /*figure out how to get inheritance from .poles1
 */
 .pole1{
-  height: 300px;
-  width: 40px;
+  flex-shrink: 3;
+  height: 65%;
+  width: 75%;
   margin-top: auto;
   /*margin-left: auto;
   margin-right: auto;*/
   /*border-width: 0px 135px 0 135px;*/
   /*~~~~~*/
   /*Padding is considered part of the droppable area, but margin is not. So I set the Margin to zero and set the padding to auto*/
-  padding: 0px 135px 0px 135px;
+  padding: 0px 135px;
   margin-left: 0;
   margin-right: 0;
   /*~~~~~~~*/
   border-style: solid;
   border-color: rgba(0,0,0,0);
 
-  background-image: url("./tower1.png");
+  background-image: url("./tower4.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  background-size: 100% 175%;
+  background-position: calc(31% - 1px) center;
   background-clip: padding-box;
   display: flex;
   flex-direction: column;
@@ -68,15 +76,16 @@ h1{
 }
 
 .pole2{
-  height: 300px;
-  width: 40px;
+  flex-shrink: 3;
+  height: 65%;
+  width: 75%;
   margin-top: auto;
   /*margin-left: auto;
   margin-right: auto;*/
   /*border-width: 0px 135px 0 135px;*/
   /*~~~~~*/
   /*Padding is considered part of the droppable area, but margin is not. So I set the Margin to zero and set the padding to auto*/
-  padding: 0px 135px 0 135px;
+  padding: 0px 135px;
   margin-left: 0;
   margin-right: 0;
   /*~~~~~~~*/
@@ -85,8 +94,8 @@ h1{
 
   background-image: url("./tower2.png");
   background-repeat: no-repeat;
-  background-size: 150% 150%;
-  background-position: calc(35% - 5px) top;
+  background-size: 250% 150%;
+  background-position: calc(42% - 5px) top;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -96,14 +105,15 @@ h1{
 }
 
 .pole3{
-  height: 300px;
-  width: 40px;
+  flex-shrink: 3;
+  height: 65%;
+  width: 75%;
   margin-top: auto;
   /*margin-left: auto;
   margin-right: auto;*/
   /*~~~~~*/
   /*Padding is considered part of the droppable area, but margin is not. So I set the Margin to zero and set the padding to auto*/
-  padding: 0px 135px 0 135px;
+  padding: 0px 135px;
   margin-left: 0;
   margin-right: 0;
   /*~~~~~~~*/
@@ -112,8 +122,8 @@ h1{
 
   background-image: url("./tower3.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: calc(50% + 7px) center;
+  background-size: 150% 150%;
+  background-position: calc(40% + 7px) top;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -123,36 +133,39 @@ h1{
 }
 
 #disc1{
-  height: 25px;
-  width: 100px;
+  height: 5%;
+  width: 90%;
+  min-width: 117px;
   order:1;
   /*border: solid purple;
   */border-radius: 10px;
   border-style: groove;
   background: linear-gradient(cyan, white);
-  opacity: 0.9
+  opacity: 0.9;
 }
 
 #disc2{
-  height: 25px;
-  width: 120px;
+  height: 5%;
+  width: 107%;
+  min-width: 138px;
   order: 2;
   /*border: solid cyan;
   */border-radius: 10px;
   border-style: groove;
   background: linear-gradient(salmon, white);
-  opacity: 0.9
+  opacity: 0.9;
 }
 
 #disc3{
-  height: 25px;
-  width: 140px;
+  height: 5%;
+  width: 130%;
+  min-width: 166px;
   order:3;
   /*border: solid orange;
   */border-radius: 10px;
   border-style: groove;
   background: linear-gradient(gray, white);
-  opacity: 0.9
+  opacity: 0.9;
 }
 
 footer{
@@ -166,13 +179,13 @@ footer{
 #rules {
     background-color: #4CAF50;
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    font-size: 34px;
     border: black solid;
     border-radius: 5px;
     cursor: pointer;
-    position: relative;
-    left: 775px
+    position: absolute;
+    right: 0.1%;
+    height:inherit;
 }
 
 #restart {
@@ -183,8 +196,74 @@ footer{
     border: black solid;
     border-radius: 5px;
     cursor: pointer;
-    position: relative;
-    left: 775px
+    position: absolute;
+    right: 0;
+    height: inherit;
+}
+
+.menu-button{
+  background-color: #4CAF50;
+  color: white;
+  font-size: 34px;
+  border: black solid;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 13.25%;
+  height:inherit;
+}
+
+.start {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 34px;
+  text-align: center;
+  border: black solid;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  left: 38%;
+  height: inherit;
+  width: 25%;
+}
+
+.pause{
+  display:none;
+  left: 51%;
+}
+
+button.unpause{
+  width: 14%;
+}
+
+.inProgress {
+  display:block;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 34px;
+  text-align: center;
+  border: black solid;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  height: inherit;
+  width: 10%;
+}
+
+.start.inProgress{
+  width: 11%;
+  left: 40%;
+}
+
+#timer {
+  position: absolute;
+  height: 100px;
+  width: 200px;
+  font-size: 45px;
+  top: 15%;
+  left: 48%;
+  color: white;
+  z-index: 5;
 }
 
 /* Dropdown button on hover & focus */
@@ -196,58 +275,87 @@ footer{
 
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+#rules-content {
     display: none;
     position: absolute;
-    top: 305px;
-    left: 375px;
+    top: 12.5%;
+    left: 21%;
     overflow: hidden;
-    width: 455px;
+    padding: 1% 2.5%;
+    width: 55%;
     background-color: #f9f9f9;
     opacity:0.7;
     box-shadow: 50px 50px 50px 100px rgba(0,0,0,0.5);
     border-radius: 20px;
-    z-index: 3;
-/*    animation: row 10s linear;
+    z-index: 7;
+    text-align: center;
+    font-size: 22px;
 }
 
-@keyframes row {
-  0% {
-    background-size: 0% 0%;
-  }
-  100% {
-    background-size: 100% 100%;
-  }
-*/
+#discs-menu {
+    display: none;
+    position: absolute;
+    top: 7.5%;
+    right: 13.12%;
+    overflow: hidden;
+    padding: 1%;
+    width: 5%;
+    background-color: #f9f9f9;
+    opacity:0.7;
+    box-shadow: 50px 50px 50px 100px rgba(0,0,0,0.5);
+    border-radius: 0px 0px 20px 20px;
+    z-index: 7;
+    text-align: center;
+    font-size: 22px;
 }
 
-.dropdown-content h4{
-    text-align: center
+#ok {
+    font-size: 22px;
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show1 {
-  display:block;
-  z-index: 3;
-}
+
 
 #win{
+  display: none;
   font-size: 100px;
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+  border-radius: 5%;
   width: 400px;
   position: absolute;
-  top: 80px;
-  left: 305px;
+  background-color: #ffcc00;
+  box-shadow: 10px 10px 5px #1a1a1a;
+  top: 15%;
+  left: 36%;
+  z-index: 7;
+}
+
+#win.show {
+  display:block;
+  z-index: 7;
+}
+
+#discs-menu.show {
+  display:block;
+  z-index: 7;
+}
+
+#rules-content.show {
+  display:block;
+  z-index: 7;
 }
 
 .panel{
   height: 50px;
-  width: 948px;
-  position: relative;
+  width: 100%;
+  position: absolute;
   margin: auto;
   background-color: gray;
   opacity: 0.7;
   border-radius: 10px;
-  display: flex;
-  flex-direction: row;
+  /*display: flex;
+  flex-direction: row;*/
   z-index: 1;
 }
