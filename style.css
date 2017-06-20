@@ -10,6 +10,7 @@ html,body{
   width: 100%;
   position: relative;
   display:block;
+  z-index: 1;
 }
 
 h1{
@@ -164,10 +165,34 @@ h1{
   /*border: solid orange;
   */border-radius: 10px;
   border-style: groove;
-  background: linear-gradient(gray, white);
+  background: linear-gradient(green, white);
   opacity: 0.9;
 }
 
+#disc4{
+  display: none;
+  height: 5%;
+  width: 152%;
+  min-width: 166px;
+  order:3;
+  /*border: solid orange;
+  */border-radius: 10px;
+  border-style: groove;
+  background: linear-gradient(violet, white);
+  opacity: 0.9;
+}
+#disc5{
+  display: none;
+  height: 5%;
+  width: 175%;
+  min-width: 166px;
+  order:3;
+  /*border: solid orange;
+  */border-radius: 10px;
+  border-style: groove;
+  background: linear-gradient(gray, white);
+  opacity: 0.9;
+}
 footer{
   font-size: 70px;
   text-align: center;
@@ -176,83 +201,127 @@ footer{
 }
 
 /* Dropdown Button */
-#rules {
+
+.menu-button {
     background-color: #4CAF50;
     color: white;
     font-size: 34px;
     border: black solid;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute;
-    right: 0.1%;
-    height:inherit;
+    height: 45px;
+    position:relative;
+    padding: 0px 5px;
+    display: inline;
 }
 
-#restart {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: black solid;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    height: inherit;
+#subpanel{
+  display:flex;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
 }
 
-.menu-button{
-  background-color: #4CAF50;
-  color: white;
-  font-size: 34px;
-  border: black solid;
-  border-radius: 5px;
-  cursor: pointer;
+#rules {
+    flex-shrink: 0;
+}
+
+#discs {
+  flex-shrink: 0;
+}
+
+#scores {
+  flex-shrink: 0;
+}
+
+#score-ok{
   position: absolute;
-  right: 13.25%;
-  height:inherit;
+  top: 90%;
+  right: 44.5%;
+  height: 9%;
+  width: 9%;
+  font-size: 20px;
 }
 
-.start {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 34px;
+#start{
+  margin-left: 25%;
   text-align: center;
-  border: black solid;
-  border-radius: 5px;
-  cursor: pointer;
-  position: absolute;
-  left: 38%;
-  height: inherit;
-  width: 25%;
+  width: 8%;
 }
 
-.pause{
+#pause{
   display:none;
-  left: 51%;
+  margin-right:22%;
 }
 
-button.unpause{
-  width: 14%;
+#pause.inProgress{
+  display: inline;
 }
 
+#start.inProgress {
+    padding: auto;
+    margin-left: 22%;
+}
 .inProgress {
-  display:block;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 34px;
-  text-align: center;
-  border: black solid;
-  border-radius: 5px;
-  cursor: pointer;
-  position: absolute;
-  height: inherit;
-  width: 10%;
+  display:inline;
 }
 
-.start.inProgress{
-  width: 11%;
-  left: 40%;
+#start.inProgress {
+  display:inline;
+}
+#pause.inProgress {
+  display:inline;
+}
+
+.menu-button:hover {
+  opacity: .5;
+}
+
+.is-disabled {
+   pointer-events: none;
+}
+
+#score-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#scores-ranked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#moves-ranked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+h3 {
+  font-size: 42px;
+}
+
+#timer-title {
+  position: absolute;
+  top: 7%;
+  left: 9%;
+  font-size: 50px;
+  color: white;
+  z-index: 1;
+}
+
+#moves-title {
+  position: absolute;
+  top: 7%;
+  right: 9%;
+  font-size: 50px;
+  color: white;
+  z-index: 5;
 }
 
 #timer {
@@ -260,16 +329,24 @@ button.unpause{
   height: 100px;
   width: 200px;
   font-size: 45px;
-  top: 15%;
-  left: 48%;
+  top: 65%;
+  left: 22%;
   color: white;
   z-index: 5;
 }
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+#moves {
+  position: absolute;
+  height: 100px;
+  width: 200px;
+  font-size: 45px;
+  top: 65%;
+  left: 40%;
+  color: white;
+  z-index: 7;
 }
+
+/* Dropdown button on hover & focus */
 
 /* The container <div> - needed to position the dropdown content */
 
@@ -292,21 +369,73 @@ button.unpause{
     font-size: 22px;
 }
 
-#discs-menu {
+#rules-ok {
+  height: 10%;
+  width: 10%;
+  font-size: 20px;
+}
+
+#score-content {
     display: none;
     position: absolute;
-    top: 7.5%;
-    right: 13.12%;
+    top: 20%;
+    left: 2%;
+    /*left: 20.5%;*/
     overflow: hidden;
-    padding: 1%;
-    width: 5%;
+    padding: 1% 2.5%;
+    height: 70%;
+    width: 90%;
     background-color: #f9f9f9;
     opacity:0.7;
     box-shadow: 50px 50px 50px 100px rgba(0,0,0,0.5);
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 20px;
     z-index: 7;
     text-align: center;
     font-size: 22px;
+}
+
+.times-list1 {
+  position: absolute;
+}
+
+.moves-list1 {
+  position: absolute;
+  left: 21%;
+}
+
+.times-list2 {
+  position: absolute;
+}
+
+.moves-list2 {
+  position: absolute;
+  left: 53.5%;
+}
+
+.times-list3 {
+  position: absolute;
+}
+
+.moves-list3 {
+  position: absolute;
+  right: 12%;
+}
+
+
+#discs-menu {
+    display: none;
+    position: absolute;
+    top: 6%;
+    left: 12.2%;
+    overflow: hidden;
+    padding: 1%;
+    width: 4%;
+    background-color: #f9f9f9;
+    box-shadow: 50px 50px 50px 100px rgba(0,0,0,0.5);
+    border-radius: 0px 0px 20px 20px;
+    z-index: 10;
+    text-align: center;
+    font-size: 40px;
 }
 
 #ok {
@@ -318,6 +447,7 @@ button.unpause{
 
 #win{
   display: none;
+  opacity: 0.7;
   font-size: 100px;
   font-family: sans-serif;
   color: white;
@@ -332,6 +462,11 @@ button.unpause{
   z-index: 7;
 }
 
+.show {
+  display:block;
+  z-index: 7;
+}
+
 #win.show {
   display:block;
   z-index: 7;
@@ -342,9 +477,32 @@ button.unpause{
   z-index: 7;
 }
 
+#disc4.show {
+  display:block;
+}
+
+#disc5.show {
+  display:block;
+}
+
 #rules-content.show {
   display:block;
   z-index: 7;
+}
+
+#score-content.show {
+  display:block;
+  z-index: 7;
+}
+
+.disc-subtitle {
+  position:relative;
+}
+
+ul {
+  /*list-style-type: none;*/
+  position: relative;
+  right: 28%;
 }
 
 .panel{

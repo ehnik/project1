@@ -9,18 +9,30 @@
   <div class="game-container">
 
     <div class = "panel">
-      <button id="start" class="start">Start New Game</button>
-      <button id="discs" class="menu-button dropbtn">Discs</button>
-      <button id="rules" class="menu-button dropbtn">Instructions</button>
-      <button class="dropbtn pause">Pause</button>
+      <div id="subpanel">
+        <div id="rules" class="menu-button">Instructions</div>
+        <div id="discs" class="menu-button">Discs</div>
+        <div id="scores" class="menu-button">Score</div>
+        <div id="start" class="start menu-button">Start</div>
+        <div id="pause" class="menu-button">Pause</div>
+      </div>
     </div>
 
-    <div id="timer">
+    <div id="timer-title">
+      <h3>Timer</h3>
+      <div id="timer">
+      </div>
     </div>
 
-    <div id="rules-content">
+    <div id="moves-title">
+      <h3>Moves</h3>
+      <div id="moves">
+      </div>
+    </div>
+
+    <div id="rules-content" class="show">
       <h2> Welcome to Towers of Hanoi! </h2>
-      <p> How to play? Simple: move each disc onto the final skyscraper!
+      <p> Your goal: move each disc onto the final skyscraper.
         <br><br>
         <span style="font-weight:700">Rules</span>
         <br>
@@ -36,19 +48,57 @@
         If you need to take a break, pause the game. If you'd like to start over, click "Restart".
         To see your highest score for the session, click "Score".
         <br><br>
-        When you're ready to start, click "Start a New Game" at the top of the screen!
+        When you're ready to start, click "Start" at the top of the screen!
         <br><br>
         Have fun!
       </p>
-      <button id="ok">Okay</button>
+      <button id="rules-ok">Okay</button>
+    </div>
+
+    <div id="score-content">
+      <h2> Scores </h2>
+      <div id="score-list">
+      <div id="three">
+        <h3 class="disc-subtitle">Three Discs</h3>
+          <div class="times-list1">
+            <h4>Time</h4>
+            <ul id="scores-ranked1"></ul>
+          </div>
+          <div class="moves-list1">
+            <h4>Moves</h4>
+            <ul id="moves-ranked1"></ul>
+          </div>
+      </div>
+      <div id="four">
+        <h3 class="disc-subtitle">Four Discs</h3>
+        <div class="times-list2">
+          <h4>Time</h4>
+          <ul id="scores-ranked2"></ul>
+        </div>
+        <div class="moves-list2">
+          <h4>Moves</h4>
+          <ul id="moves-ranked2"></ul>
+        </div>
+      </div>
+      <div id="five">
+        <h3 class="disc-subtitle">Five Discs</h3>
+        <div class="times-list3">
+          <h4>Time</h4>
+          <ul id="scores-ranked3"></ul>
+        </div>
+        <div class="moves-list3">
+          <h4>Moves</h4>
+          <ul id="moves-ranked3"></ul>
+        </div>
+      </div>
+      </div>
+      <button id="score-ok" class="ok">Okay</button>
     </div>
 
     <div id="discs-menu">
       <input id="3" type="radio" name="discNum" value="3"> 3<br>
       <input id="4" type="radio" name="discNum" value="4"> 4<br>
-      <input id-"5" type="radio" name="discNum" value="5"> 5<br>
-      <br>
-      <button id="ok">Okay</button>
+      <input id="5" type="radio" name="discNum" value="5"> 5<br>
     </div>
 
     <div id="win">
@@ -58,9 +108,12 @@
   <div class ="container">
 
     <div id = "pole1" class = "poles pole1">
-      <div id="disc1" class = "discs active"></div>
-      <div id="disc2" class = "discs active"></div>
-      <div id="disc3" class = "discs active"></div>
+      <div id="disc1" class = "discs"></div>
+      <div id="disc2" class = "discs"></div>
+      <div id="disc3" class = "discs"></div>
+      <div id="disc4" class = "discs"></div>
+      <div id="disc5" class = "discs"></div>
+
     </div>
 
     <div id = "pole2" class = "poles pole2"></div>
